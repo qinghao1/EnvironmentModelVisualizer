@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+    <title>Tree drawer demostration</title>
+        <script type="text/javascript" src="listLib/list.js"></script>
+        <script type="text/javascript" src="listLib/kinetic.js"></script>
+        <script type="text/javascript" src="listLib/tree_drawer.js"></script>
+        <script type="text/javascript" src="listLib/list_to_tree.js"></script>
+    </head>
+<body>
+<pre>pair (list) strucutre demostrated here</pre>
+
+<div id="container"></div>
+
+<script type="text/javascript">
+    var stage = new Kinetic.Stage({
+        width:1500,
+        height:800,
+        container:"container"
+    });
+
+    // pre-defined lists
+    var tree = pair(list(1,2), list(3, 4));
+    var layerPair = new Kinetic.Layer();
+    stage.add(layerPair);
+    var pairA = list(12,3,4,5);
+    function test(pair) {
+        drawTree(list_to_tree(pair), 50, 50, layerPair);
+        stage.draw();
+    }
+
+    function loadData() {
+        var thisPair = localStorage.getItem('_toStore');
+        if(thisPair) {
+            thisPair = JSON.parse(thisPair);
+            test(thisPair);
+            localStorage.removeItem('_toStore');
+        } 
+    }
+
+    //loadData();
+    test(pairA);
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

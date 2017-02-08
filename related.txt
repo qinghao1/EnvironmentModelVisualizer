@@ -1,0 +1,6 @@
+1.
+Link: http://www.daviddurman.com/automatic-graph-layout-with-jointjs-and-dagre.html
+
+Interactive (draggable) box-and-pointer diagram. 
+Input: JSON.
+Libraries used: JointJS and Dagre.

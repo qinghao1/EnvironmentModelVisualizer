@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+
+<html>
+
+  <head>
+    <script type="text/javascript" src="lib/kinetic-v5.1.0.js"></script>
+    <script type="text/javascript" src="lib/list-new.js"></script>
+    <script type="text/javascript" src="lib/jediscript-week-13_v2.js"></script>
+  </head>
+  <body>
+        <pre>
+function add1(x) {
+  return x+1;
+} 
+function add11(x) {
+  var a = add1; 
+  var e = list(1,2,list(3,4,5,6),7,8,9); 
+  function add111(xx) {
+    var c = add1; 
+    return c(xx);
+  } 
+  var b = add111(2); 
+  return a(x);
+} 
+function add12(x) {
+  function add1111(xxxx) {
+    return 1;
+  } 
+  var d = add1111(0);
+  var a = list(1); 
+  var b = add1; 
+  return b(b(x));
+} 
+var c = add11(1); 
+var d = add12(1); 
+var f = list(1,2,3,list(3,4,2), list(list(7,8,9)));
+
+    </pre>
+    <input type="button" id="1" value="drawEnv1" onclick="testEnv1();">
+    <input type="button" id="2" value="drawEnv2" onclick="testEnv2();">
+    <script type="text/javascript">
+    function testEnv1() {
+        parse_and_evaluate("var aList = list(1,2,3,4);");
+        var input = parse_and_evaluate("get_frames();");
+        parseInput(input);
+    }
+
+    function testEnv2() {
+      parse_and_evaluate("function add1(x) {return x+1;} function add11(x) {var a = add1; var e = list(1,2,list(3,4,5,6),7,8,9); function add111(xx) {var c = add1; return c(xx);} var b = add111(2); return a(x);} function add12(x) {function add1111(xxxx) {return 1;} var d = add1111(0);var a = list(1); var b = add1; return b(b(x));} var c = add11(1); var d = add12(1); var f = list(1,2,3,list(3,4,2), list(list(7,8,9)));");
+      var input = parse_and_evaluate("get_frames();");
+      parseInput(input);
+    }
+
+
+    </script>
+<div id="container">
+    <script type="text/javascript" src="visualizer_v2.js"></script>
+        <script type="text/javascript" src="listLib/list.js"></script>
+        <script type="text/javascript" src="listLib/tree_drawer.js"></script>
+        <script type="text/javascript" src="listLib/list_to_tree.js"></script>
+</div>
+<!--script type="text/javascript">
+    var stage = new Kinetic.Stage({
+        width:1500,
+        height:800,
+        container:"container"
+    });
+
+    // pre-defined lists
+    var tree = pair(list(1,2), list(3, 4));
+</script-->
+
+
+  </body>
+</html>    

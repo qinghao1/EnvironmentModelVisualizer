@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+
+<html>
+
+  <head>
+    <script type="text/javascript" src="lib/kinetic-v5.1.0.js"></script>
+    <script type="text/javascript" src="lib/list-new.js"></script>
+    <script type="text/javascript" src="lib/jediscript-week-13_v2.js"></script>
+  </head>
+  <body>
+        <pre>
+// Env1
+var b = pair(1,2); 
+function add2(x) {
+  return x + 2;
+} 
+function add1(x) {  
+  var y = add2; 
+  return y(1);
+} 
+var f = add1(2); 
+function gg(x) {
+  function hh() { 
+    return x + 1;
+  } 
+  return hh;
+} 
+var ggcall = gg(1); 
+function g(x) { 
+  function h() { 
+    return x + 1;
+  } 
+  return h;
+} 
+var f = g(2);
+
+==================================================
+
+// Env2
+var a = 0; 
+var b = 1;
+
+function add1(a) {
+  function add11(add){ 
+    var x = list(1); 
+    var y = true; 
+    var z = list(); 
+    return add+11;
+  }
+  function add12(add){ 
+    return add+12;
+  } 
+  var y = add12(a);
+  var x = add11(a); 
+  add2(2); 
+  var aList = list(1,2,3,4,5,6,6,7,8,9,5);
+  return x;
+} 
+
+function add2(a) {
+  return a+2;
+} 
+
+var e = add2(b); 
+var d= add1(a);
+
+function add(a,b) { 
+  return a + b;
+} 
+
+var c = add(a,b);
+var longList = list(pair(pair(1,2),3),pair(pair(5,6),pair(7,pair(8,9))));
+
+
+    </pre>
+    <input type="button" id="1" value="Functions that were defined in another frame" onclick="testEnv1();">
+    <input type="button" id="2" value="Long list" onclick="testEnv2();">
+    <input type="button" value="refresh" onclick="history.go(0)">
+    <script type="text/javascript">
+    function testEnv1() {
+        parse_and_evaluate("var b = pair(1,2); function add2(x) {return x + 2;} function add1(x) {  var y = add2; return y(1);} var f = add1(2); function gg(x) {function hh() { return x + 1;} return hh;} var ggcall = gg(1); function g(x) { function h() { return x + 1;} return h;} var f = g(2);");
+        var input = parse_and_evaluate("get_frames();");
+        parseInput(input);
+    }
+
+    function testEnv2() {
+      parse_and_evaluate("var a = 0; var b = 1; function add1(a) {function add11(add){ var x = list(1); var y = true; var z = list(); return add+11;}function add12(add){ return add+12;} var y = add12(a);var x = add11(a); add2(2); var aList = list(1,2,3,4,5,6,6,7,8,9,5);return x;} function add2(a) {return a+2;} var e = add2(b); var d= add1(a);function add(a, b) { return a + b;} var c = add(a,b);var longList = list(pair(pair(1,2),3),pair(pair(5,6),pair(7,pair(8,9)))); ");
+
+      var input = parse_and_evaluate("get_frames();");
+      parseInput(input);
+    }
+
+
+    </script>
+<div id="container">
+    <script type="text/javascript" src="visualizer_v2.js"></script>
+        <script type="text/javascript" src="listLib/list.js"></script>
+        <script type="text/javascript" src="listLib/tree_drawer.js"></script>
+        <script type="text/javascript" src="listLib/list_to_tree.js"></script>
+</div>
+<!--script type="text/javascript">
+    var stage = new Kinetic.Stage({
+        width:1500,
+        height:800,
+        container:"container"
+    });
+
+    // pre-defined lists
+    var tree = pair(list(1,2), list(3, 4));
+</script-->
+
+
+  </body>
+</html>    

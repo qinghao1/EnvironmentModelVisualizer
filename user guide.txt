@@ -1,0 +1,30 @@
+Here comes interpreter V1
+
+Use parse_and_evaluate("...") to change the state of the environment.
+
+Call parse_and_evaluate("get_frames();") to get the environment object.
+
+The structure of the frame tree is like what I have explained. 
+A pair: [an array(works as a table) containing the information of the
+	 global frame,
+	 a list of subtrees of the global frame]
+The head of pair is a 2D array(array of pairs).
+
+The first pair of the array is [local_functions, [array of function values]]
+Here is an example of one function value: { index: 2, parameter: [x,y,z], body: "return x+y+z;" }
+[array of function values] is an array consisting of that kind of objects¡ü
+
+From the second pair to the last, the head is the variable name and the tail is the value. 
+There are several types of values but all of them are tagged objects:
+For example:
+{ tag:"primitive", value: 23 } represents number 1
+{ tag:"primitive", value: "cs1101s" } represents string "cs1101s"
+{ tag:"primitive", value: true } represents boolean true
+{ tag:"function", index: 2 } represents the function value with the index 2
+{ tag:"empty_list", index: 1 } represents the empty list with index 1(two empty 
+			       list with same index meaning they are the same one, 
+			       otherwise they should be draw seperatly).
+{ tag:"pair"...} I have not worked on this type, please do not use it now
+{ tag:"object" ...} Since it is out of our scope now, again, ignore it :)
+
+For any questions or bugs, just message me:)

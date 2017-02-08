@@ -1,0 +1,23 @@
+Call parse_and_evaluate("get_frames();"); to obtain an array containing infomation of the environment.
+
+Each entry is a "table", which is an array of key-value pairs showing the relationship between variables
+and values in the correspondign frame.
+
+For example, frames = parse_and_evaluate("get_frames();"); frames[0] will return the table showing infomation
+of the global frame.
+
+And each "table" contains several special entries.
+
+For any frame[i], frame[i][0] is a pair("__viz_index", x), x indicates the index of the corresponding frame.
+In face, x=i for every tables.
+
+For every frame exception the global frame(frame[0]), frame[i][1] is a pair("__viz_enclosing", y), y indicates
+the index of its enclosing frame. For instance, frame[1][1] is pair("__viz_enclosing", 0) since it is enclosed by
+frame with index 0(the global frame).
+
+The second entry of the global frame(frame[0][1]), and the third entry of other tables, which is frame[i][2] is 
+pair("local_functions",...) contains all the function defined locally. 
+
+The remaining is the same as the previous version.
+
+And there is a simple demo in demo.png. 

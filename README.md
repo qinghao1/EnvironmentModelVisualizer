@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # CS1010R: Environment Model Visualization #
 ***
 # The Team #
@@ -72,3 +73,7 @@ Although the size of the stage is adjustable, it is not infinite. And larger sta
 * Distinction of lists.
 * Dynamic stage size to accommodate every input.
 * ~~Dynamic list visualizer's container.~~
+=======
+# EnvironmentModelVisualizer
+Environment Model Visualizer for CS1101S source IDE as part of my independent work (CP3108)
+>>>>>>> a00029fae1e5a827143678bc1040d9780e011d4d

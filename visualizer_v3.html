@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+
+<html>
+
+  <head>
+    <script type="text/javascript" src="lib/kinetic-v5.1.0.js"></script>
+    <script type="text/javascript" src="lib/list-new.js"></script>
+    <script type="text/javascript" src="lib/jediscript-week-13_v2.js"></script>
+    <!-- <script type="text/javascript" src="src/interpreter_v4.js"></script> -->
+    <script type="text/javascript" src="visualizer_v3.js"></script>
+            <script type="text/javascript" src="listLib/list.js"></script>
+            <script type="text/javascript" src="listLib/tree_drawer.js"></script>
+            <script type="text/javascript" src="listLib/list_to_tree.js"></script>
+    <script type="text/javascript">
+      function eval_code() {
+        var code_input = document.getElementById("test_code").value;
+        parse_and_evaluate(code_input);
+        parseInput(parse_and_evaluate("get_frames();"));
+      }
+      window.onload = function() {
+        document.getElementById("visualize_code").addEventListener("click", eval_code);
+        stage = new Kinetic.Stage({
+          container: document.getElementById('stage_container'),
+          width: stageWidth,
+          height: stageHeight
+        });
+        document.getElementById('wrapper').style.height = window.innerHeight - 202 + "px";
+      };
+    </script>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id = "test_code" rows = "15" cols = "100" placeholder = "Your Code here"></textarea>
+    <input type="button" id="visualize_code" value="Visualize Code">
+    <input type="button" value="Reset" onclick="history.go(0)">
+    <div id = "wrapper" style = "overflow:scroll;">
+    <div id = "stage_container"></div>
+    </div>
+  </body>
+</html>    

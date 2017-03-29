@@ -1176,8 +1176,8 @@ var stage = new Kinetic.Stage({
 */
 
 // New sizes
-const stageWidth = 2000;
-const stageHeight = 2000;
+const stageWidth = window.innerWidth - 20;
+const stageHeight = 1000;
 
 var initX = stageWidth / 2;
 var initY = stageHeight / 2;

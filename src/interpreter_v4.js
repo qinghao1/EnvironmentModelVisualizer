@@ -1270,9 +1270,10 @@ parse_and_evaluate = function(string, timeout) {
 	}
 
 	var result = debug_evaluate_toplevel(
-		string.replace(new RegExp('\r\n', 'g'), '\n').replace(new RegExp('\r', 'g'), '\n').split('\n'),
-		parse(string),
-		environment_stack.top());
+			string.replace(new RegExp('\r\n', 'g'), '\n').replace(new RegExp('\r', 'g'), '\n').split('\n'),
+			parse(string),
+			environment_stack.top()
+		);
 
 	// Reset the timeout.
 	expires = undefined;

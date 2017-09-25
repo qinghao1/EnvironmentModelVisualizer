@@ -8,14 +8,14 @@
  */
 
  function render_environment(frame, canvas) {
-    // Set the stage (render target) if it has not already been set.
-    // stageWidth and stageHeight are constants in visualizer js
-    stage ||= new Kinetic.Stage({
-     container: canvas,
-     width: stageWidth,
-     height: stageHeight
-   });
+  // Set the stage (render target) if it has not already been set.
+  // stageWidth and stageHeight are constants in visualizer js
+  stage ||= new Kinetic.Stage({
+    container: canvas,
+    width: stageWidth,
+    height: stageHeight
+  });
 
-    // Render
-    parseInput(convert_new_to_old(frame));
-  }
+  // Render
+  parseInput(convert_new_to_old(frame));
+}

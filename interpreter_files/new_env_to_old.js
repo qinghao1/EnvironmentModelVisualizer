@@ -11,28 +11,32 @@ var all_frames_array = []; //Global variable that stores the environment array (
 
 /**
  * The main function that converts a 'new' Frame object into a 'old' Environment stack
- * @param env the current environment list at the breakpoint (which is a list of environment objects)
+ * @param frame the current frame at the breakpoint (which is basically a list of environment objects)
  * @return the global all_frames_array that is compatible 
  */
 function convert_new_to_old(frame) {
   //Iterates down the frame array starting with the innermost global environment, to the uppermost.
   //First converts each new 'environment' to an array that is compatible with the old visualizer. 
   //Then it adds this array to the array of all frames (over all previous breakpoints)
+
   var current_enclosing_index = undefined;
-  while (frame) {
-    if (frame.environment) {
+
+  //Change frame list to array so that we can start from the global environment (legacy reasons)
+  var frame_array = frame_to_array(frame);
+  for (var int i = frame_array.length - 1; i >= 0; i--) {
+    var current_frame = frame_array[i];
+    if (current_frame.environment) {
       var environment_array = env_obj_to_array( 
         //Convert 'environment' of frame to an array that is compatible with the old visualizer
-        frame.environment,
+        current_frame.environment,
         current_enclosing_index //__viz_enclosing
       );
       current_enclosing_index = add_to_all_frame_array(environment_array);
     } else {
       //No environment
-      console.log("Error: this frame has no environment property");
-      console.log(frame);
+      console.log("Error: frame " + i + " has no environment");
+      console.log(current_frame);
     }
-    frame = frame.parent;
   }
   return all_frames_array;
 }
@@ -137,6 +141,18 @@ function env_obj_to_array(obj, viz_enclosing) {
 }
 
 //Helper functions
+
+//Returns frame array with array[last] being the global frame
+function frame_to_array(frame) {
+  var frame_array = [];
+  while (frame) {
+    frame_array.push(frame);
+    frame = frame.parent;
+  }
+
+  return frame_array;
+}
+
 function is_function(obj) {
   return typeof obj === "function";
 }

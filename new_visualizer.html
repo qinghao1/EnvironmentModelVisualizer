@@ -8,7 +8,7 @@
     <script type="text/javascript" src="new_visualizer.js"></script>
             <script type="text/javascript" src="listLib/tree_drawer.js"></script>
             <script type="text/javascript" src="listLib/list_to_tree.js"></script>
-    <script type="text/javascript" src="old_env_to_new.js"></script>
+    <script type="text/javascript" src="old_env_to_new_2.js"></script>
     <script type = "text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/esprima/2.7.3/esprima.min.js"></script>
         <script type="text/javascript" src="new_interpreter/list.js"></script>
         <script type="text/javascript" src="new_interpreter/misc.js"></script>
@@ -17,17 +17,12 @@
         <script type = "text/javascript" src = "new_interpreter/interpreter.js"></script>
 
     <script type = "text/javascript">
-      //TODO: Set breakpoint at every line
       function get_frames() {return parse_and_evaluate("get_frames();");}
       function eval_code() {
         var code_input = document.getElementById("test_code").value;
         var iter = parse_and_evaluate(code_input);
         iter.next(); //Skip first environment which is empty for some reason
-        var returnValue = iter.next();
-        while (!returnValue.done) {
-          add_env_list_to_all_frames(get_current_env());
-          returnValue = iter.next();
-        }
+        while (!iter.next().done) {}
         add_env_list_to_all_frames(get_current_env());
         parseInput(get_all_frames());
       }
